@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SGH2425_V3.Models.Solicitar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista das Solicitações</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Medicamento</a>
+</p>
+<table id="myTable" class=" table table-bordered table-responsive table-hover table-responsive-lg">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicamento.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qtd_Prescrita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posologia)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Prescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>Anular</th>
+            <th>Ver</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicamento.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicamento.Nome_medicamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qtd_Prescrita)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posologia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prescricao.CodigoPrescricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prescricao.Descricao)
+                </td>
+             
+
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="">Anular</a>
+                </td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="">Ver</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+                    'url': 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-PT.json'
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+

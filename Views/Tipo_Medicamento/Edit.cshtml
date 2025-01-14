@@ -1,0 +1,61 @@
+﻿@model SGH2425_V3.Models.Tipo_Medicamento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar Tipo de Medicamentos</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Tipo" class="control-label"></label>
+                        <input asp-for="Tipo" class="form-control" />
+                        <span asp-validation-for="Tipo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Forma_Farmaceutica" class="control-label"></label>
+                        <input asp-for="Forma_Farmaceutica" class="form-control" />
+                        <span asp-validation-for="Forma_Farmaceutica" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Descricao" class="control-label"></label>
+                        <input asp-for="Descricao" class="form-control" />
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a class="btn btn-warning" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+

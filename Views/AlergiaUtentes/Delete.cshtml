@@ -1,0 +1,47 @@
+﻿@model SGH2425_V3.Models.AlergiaUtente
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Utente</h1>
+
+<h3>Tens a Certeza que Pretendes Eliminar Este Utente?</h3>
+<div>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_Alergia)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tipo_Alergia)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Descricao)
+                </td>
+                
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_Ultima_Alergia)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Data_Ultima_Alergia)
+                </td>
+               
+
+            </tr>
+        </table>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </form>
+    </div>
+</div>
+

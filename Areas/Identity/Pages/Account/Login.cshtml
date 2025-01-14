@@ -1,0 +1,316 @@
+﻿@page
+@model LoginModel
+<h1>@ViewData["Title"]</h1>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 800px;
+            height: 450px;
+            display: flex;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .login-left,
+        .login-right {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .login-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .login-left h2 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #333;
+            }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                text-decoration: none;
+                color: #333;
+                font-size: 16px;
+            }
+
+                .social-icons a:hover {
+                    background: #ddd;
+                }
+
+        .login-left input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-left a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .login-left button {
+            width: 100%;
+            padding: 10px;
+            background: #6a1b9a;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .login-left button:hover {
+                background: #7b1fa2;
+            }
+
+        .login-right {
+            background: linear-gradient(to right, #f8a541, #5ec4e0); /* Laranja e azul */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+            .login-right h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .login-right p {
+                font-size: 14px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .login-right button {
+                padding: 10px 20px;
+                background: #fff;
+                color: #f8a541;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+           
+        a {
+            color: inherit; /* Garante herança de cor */
+            text-decoration: none; /* Remove sublinhado do link */
+        }
+
+        /* Estilo do botão (usado também no link) */
+        .login-right button,
+        .login-right .login-right-button {
+            padding: 10px 20px; /* Espaçamento interno */
+            background: #fff; /* Cor de fundo */
+            color: #f8a541; /* Cor do texto */
+            font-size: 16px; /* Tamanho da fonte */
+            border: none; /* Sem borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            text-align: center; /* Centraliza o texto */
+            cursor: pointer; /* Cursor de ponteiro */
+            display: inline-block; /* Faz o link parecer um botão */
+            transition: background-color 0.3s ease; /* Suaviza o efeito hover */
+        }
+
+            /* Alteração para remover o azul e o sublinhado do link */
+            .login-right .login-right-button:link,
+            .login-right .login-right-button:visited {
+                color: #f8a541; /* Cor do texto no estado padrão e visitado */
+                text-decoration: none; /* Remove sublinhado */
+            }
+
+            /* Efeito hover e active */
+            .login-right .login-right-button:hover,
+            .login-right .login-right-button:active {
+                background: #eee; /* Cor de fundo ao passar o mouse */
+                color: #f8a541; /* Cor do texto ao passar o mouse */
+                text-decoration: none; /* Remove o sublinhado no hover */
+            }
+
+        .system-name {
+            font-size: 1000px; /* Tamanho maior para mais destaque */
+            font-weight: bold;
+            background: linear-gradient(to right, #003366, #f08a24); /* Gradiente azul escuro para laranja */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            text-transform: uppercase; /* Letras maiúsculas */
+            letter-spacing: 6px; /* Espaçamento entre letras */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra mais visível */
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Esquerda -->
+        <div class="login-left">
+            <h2>Entrar</h2>
+            
+            <section>
+            <form id="account" method="post">
+      
+             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+             <label asp-for="Input.Password" class="form-label">Password</label>
+            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+            
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
+            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
+
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation"></a>
+                    </p>
+                    
+            </form>
+            </section>
+        </div>
+
+        <!-- Direita -->
+        <div class="login-right">
+            <p class="system-name">
+                MEDIFORM
+            </p>
+        
+            <button> 
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registar</a>
+           
+            </button>
+
+           
+        </div>
+     
+    </div>
+</body>
+</html>  
+
+
+
+@* 
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div> 
+     <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to log in.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                  
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>   
+  *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

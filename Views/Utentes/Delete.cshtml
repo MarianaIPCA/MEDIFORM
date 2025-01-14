@@ -1,0 +1,93 @@
+﻿@model SGH2425_V3.Models.Utente
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Utente</h1>
+
+<h3>Tens a Certeza que Pretendes Eliminar Este Utente?</h3>
+<div>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Nome)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.NU)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.NU)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genero)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Genero)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_Nascimento)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Data_Nascimento)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Peso)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Peso)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telemovel)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Telemovel)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.AlergiaUtente)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.AlergiaUtente.Tipo_Alergia)
+                </td>
+
+            </tr>
+        </table>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

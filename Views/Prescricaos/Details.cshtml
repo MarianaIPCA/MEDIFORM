@@ -1,0 +1,81 @@
+﻿@model SGH2425_V3.Models.Prescricao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do Medicamento</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoPrescricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.CodigoPrescricao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Utentes)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Utentes.Nome)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataPrescricao)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DataPrescricao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ValidadePrescricao)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValidadePrescricao)
+                </td>
+
+            </tr>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Estado)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistradoPor)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RegistradoPor.Name)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Descricao)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    <a class="btn btn-primary" asp-action="Index">Voltar</a>
+</div>
+
+
+
+
+
+
+

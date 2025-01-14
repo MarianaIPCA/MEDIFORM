@@ -1,0 +1,105 @@
+﻿@model SGH2425_V3.Models.Utente
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar Utente</h1>
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NU" class="control-label"></label>
+                        <input asp-for="NU" class="form-control" />
+                        <span asp-validation-for="NU" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Genero" class="control-label"></label>
+                        <input asp-for="Genero" class="form-control" />
+                        <span asp-validation-for="Genero" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Data_Nascimento" class="control-label"></label>
+                        <input asp-for="Data_Nascimento" class="form-control" />
+                        <span asp-validation-for="Data_Nascimento" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Peso" class="control-label"></label>
+                        <input asp-for="Peso" class="form-control" />
+                        <span asp-validation-for="Peso" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Telemovel" class="control-label"></label>
+                        <input asp-for="Telemovel" class="form-control" />
+                        <span asp-validation-for="Telemovel" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AlergiaUtenteId" class="control-label"></label>
+                        <select asp-for="AlergiaUtenteId" class="form-control" asp-items="ViewBag.AlergiaUtenteId"></select>
+                        <span asp-validation-for="AlergiaUtenteId" class="text-danger"></span>
+                    </div>
+                </div>
+
+               
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a class="btn btn-warning" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

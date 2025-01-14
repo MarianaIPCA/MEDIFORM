@@ -1,0 +1,76 @@
+﻿@model SGH2425_V3.Models.Prescricao
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Medicamento</h1>
+
+<h3>Tens a Certeza que Pretendes Eliminar Este Medicamento?</h3>
+<div>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoPrescricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.CodigoPrescricao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Utentes)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Utentes.Nome)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataPrescricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DataPrescricao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ValidadePrescricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValidadePrescricao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Estado)
+                </td>
+               
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistradoPor)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RegistradoPor.Name)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Descricao)
+                </td>
+
+
+
+            </tr>
+        </table>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </form>
+    </div>
+</div>
+

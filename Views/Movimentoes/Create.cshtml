@@ -1,0 +1,242 @@
+﻿@model SGH2425_V3.Models.Movimento
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Movimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Tipo_Movimento" class="control-label"></label>
+                <input asp-for="Tipo_Movimento" class="form-control" />
+                <span asp-validation-for="Tipo_Movimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Qtd_Movimento" class="control-label"></label>
+                <input asp-for="Qtd_Movimento" class="form-control" />
+                <span asp-validation-for="Qtd_Movimento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrescricaoId" class="control-label"></label>
+                <select asp-for="PrescricaoId" class="form-control" asp-items="ViewBag.PrescricaoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicamentoId" class="control-label"></label>
+                <select asp-for="MedicamentoId" class="form-control" asp-items="ViewBag.MedicamentoId"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+@* @model MovimentacaoEViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Movimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TipoMov" class="control-label"></label>
+                <input asp-for="TipoMov" class="form-control" />
+                <span asp-validation-for="TipoMov" class="text-danger"></span>
+            </div>
+
+            <table id="myTable" class=" table table-bordered table-responsive table-hover table-responsive-lg">
+                <thead>
+                    <tr>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prescricao.CodigoPrescricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prescricao.Utentes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prescricao.DataPrescricao)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prescricao.ValidadePrescricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prescricao.Estado)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PrescricaoList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoPrescricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Utentes.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataPrescricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ValidadePrescricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+
+                            <td>
+                                <a class="btn btn-secondary" asp-action="PrecricaoSolicitacao" asp-controller="SolicitarsController">Solicitações</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Ver</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <table id="myTable" class=" table table-bordered table-responsive table-hover table-responsive-lg">
+                <thead>
+                    <tr>
+                      
+                        <th>
+                            @Html.DisplayNameFor(model => model.Medicamento.Nome_medicamento)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Medicamento.Localicao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Medicamento.stock)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Medicamento.Data_Validade)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Medicamento.TipoMedicamento)
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MedicamentoList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome_medicamento)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Localicao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.stock)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data_Validade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipoMedicamento.Tipo)
+                            </td>
+
+                            <td>
+                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Ver</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            <div class="form-group">
+                <label asp-for="QtdMov" class="control-label"></label>
+                <input asp-for="QtdMov" class="form-control" />
+                <span asp-validation-for="QtdMov" class="text-danger"></span>
+            </div>
+         
+        
+            
+            
+         
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@

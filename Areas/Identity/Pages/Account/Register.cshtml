@@ -1,0 +1,205 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 800px;
+            height:450px;
+            display: flex;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-left,
+        .form-right {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .form-left h2 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #333;
+            }
+
+            .form-left input {
+                width: 90%; /* Ajuste para reduzir o tamanho */
+                padding: 8px;
+                margin-bottom: 12px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .form-left button {
+                width: 100%;
+                padding: 10px;
+                background: #6a1b9a;
+                color: #fff;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .form-left button:hover {
+                    background: #7b1fa2;
+                }
+
+        .form-right {
+            background: linear-gradient(to right, #f8a541, #5ec4e0); /* Laranja e azul */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;  
+        }
+
+            .form-right h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .form-right p {
+                font-size: 14px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .form-right button {
+                padding: 10px 20px;
+                background: #fff;
+                color: #f8a541;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        a {
+            color: inherit; /* Garante herança de cor */
+            text-decoration: none; /* Remove sublinhado do link */
+        }
+
+        /* Estilo do botão (usado também no link) */
+        .form-right button,
+        .form-right .form-right-button {
+            padding: 10px 20px; /* Espaçamento interno */
+            background: #fff; /* Cor de fundo */
+            color: #f8a541; /* Cor do texto */
+            font-size: 16px; /* Tamanho da fonte */
+            border: none; /* Sem borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            text-align: center; /* Centraliza o texto */
+            cursor: pointer; /* Cursor de ponteiro */
+            display: inline-block; /* Faz o link parecer um botão */
+            transition: background-color 0.3s ease; /* Suaviza o efeito hover */
+        }
+
+            .form-right .form-right-button:link,
+            .form-right .form-right-button:visited {
+                color: #f8a541; /* Cor do texto no estado padrão e visitado */
+                text-decoration: none; /* Remove sublinhado */
+            }
+
+            .form-right .form-right-button:hover,
+            .form-right .form-right-button:active {
+                background: #eee; /* Cor de fundo ao passar o mouse */
+                color: #f8a541; /* Cor do texto ao passar o mouse */
+                text-decoration: none; /* Remove o sublinhado no hover */
+            }
+
+        /* Sistema nome */
+        .system-name {
+            font-size: 1000px; /* Tamanho maior para mais destaque */
+            font-weight: bold;
+            background: linear-gradient(to right, #003366, #f08a24); /* Gradiente azul escuro para laranja */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            text-transform: uppercase; /* Letras maiúsculas */
+            letter-spacing: 6px; /* Espaçamento entre letras */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra mais visível */
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Esquerda -->
+        <div class="form-left">
+            <h2>Criar Conta</h2>
+            <section>
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <label asp-for="Input.Nome" class="form-label">Nome</label>
+                    <input asp-for="Input.Nome" class="form-control" />
+                    <span asp-validation-for="Input.Nome" class="text-danger"></span>
+
+                    <label asp-for="Input.NivelAcesso" class="form-label">Nivel de Acesso</label>
+                    <input asp-for="Input.NivelAcesso" class="form-control" />
+                    <span asp-validation-for="Input.NivelAcesso" class="text-danger"></span>
+
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                    <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg btn-block">Registar</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Direita -->
+        <div class="form-right">
+            <p class="system-name">
+                MEDIFORM
+            </p>
+            <button>
+                <a asp-page="./Login">Entrar</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

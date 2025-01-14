@@ -1,0 +1,60 @@
+﻿@model SGH2425_V3.Models.AlergiaUtente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Registrar Utente</h1>
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Tipo_Alergia" class="control-label"></label>
+                        <input asp-for="Tipo_Alergia" class="form-control" />
+                        <span asp-validation-for="Tipo_Alergia" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Descricao" class="control-label"></label>
+                        <input asp-for="Descricao" class="form-control" />
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Data_Ultima_Alergia" class="control-label"></label>
+                        <input asp-for="Data_Ultima_Alergia" class="form-control" />
+                        <span asp-validation-for="Data_Ultima_Alergia" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a class="btn btn-warning" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+

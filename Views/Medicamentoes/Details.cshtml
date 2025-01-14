@@ -1,0 +1,125 @@
+﻿@model SGH2425_V3.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do Medicamento</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome_medicamento)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Nome_medicamento)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Lote)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Lote)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dosagem)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Dosagem)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.stock)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.stock)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock_Min)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Stock_Min)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoMedicamento)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.TipoMedicamento.Tipo)
+                </td>
+
+              
+            </tr>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Localicao)
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Localicao)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_Producao)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Data_Producao)
+                </td>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_Validade)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Data_Validade)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataRegistro)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DataRegistro)
+                </td>
+              
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistradoPor)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RegistradoPor.Name)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    <a class="btn btn-primary" asp-action="Index">Voltar</a>
+</div>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+﻿@model IEnumerable<SGH2425_V3.Models.Utente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista dos Utentes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Utente</a>
+</p>
+<table id="myTable" class=" table table-bordered table-responsive table-hover table-responsive-lg">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_Nascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Peso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telemovel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlergiaUtente)
+            </th>
+
+            <th>Editar</th>
+            <th>Ver</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data_Nascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Peso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telemovel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlergiaUtente.Tipo_Alergia)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                </td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Ver</a>
+                </td>
+
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+                    'url': 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-PT.json'
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
